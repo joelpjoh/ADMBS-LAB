@@ -1,0 +1,187 @@
+SQL> CREATE TABLE Student(StudentID NUMBER(5)PRIMARY KEY,StudentName VARCHAR(50),AgeNUMBER(2),DepartmentVARCHAR(20));
+CREATE TABLE Student(StudentID NUMBER(5)PRIMARY KEY,StudentName VARCHAR(50),AgeNUMBER(2),DepartmentVARCHAR(20))
+                                                                                     *
+ERROR at line 1:
+ORA-00902: invalid datatype
+
+
+SQL> CREATE TABLE Student(StudentID NUMBER(5)PRIMARY KEY,StudentName VARCHAR(50),Age NUMBER(2),Department VARCHAR(20));
+
+Table created.
+
+SQL> desc Student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENTID                                 NOT NULL NUMBER(5)
+ STUDENTNAME                                        VARCHAR2(50)
+ AGE                                                NUMBER(2)
+ DEPARTMENT                                         VARCHAR2(20)
+
+SQL> ALTER TABLE STUDENT ADD Email VARCHAR(50);
+
+Table altered.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENTID                                 NOT NULL NUMBER(5)
+ STUDENTNAME                                        VARCHAR2(50)
+ AGE                                                NUMBER(2)
+ DEPARTMENT                                         VARCHAR2(20)
+ EMAIL                                              VARCHAR2(50)
+
+SQL> INSERT INTO Student VALUES(1,'Mariyam',22,'computer science');
+INSERT INTO Student VALUES(1,'Mariyam',22,'computer science')
+            *
+ERROR at line 1:
+ORA-00947: not enough values
+
+
+SQL> INSERT INTO Student VALUES(1,'Mariyam',22,'computer science');
+INSERT INTO Student VALUES(1,'Mariyam',22,'computer science')
+            *
+ERROR at line 1:
+ORA-00947: not enough values
+
+
+SQL> INSERT INTO Student VALUES(1,'Mariyam',22,'computer science','mariyam@gmail.com');
+
+1 row created.
+
+SQL> INSERT INTO Student VALUES(1,'Naveen',21,'humanities','naveen33@gmail.com');
+INSERT INTO Student VALUES(1,'Naveen',21,'humanities','naveen33@gmail.com')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C003994) violated
+
+
+SQL> INSERT INTO Student VALUES(2,'Naveen',21,'humanities','naveen33@gmail.com');
+
+1 row created.
+
+SQL> INSERT INTO Student VALUES(3,'Midhun',22,'computer science ','midhun78@gmail.com');
+
+1 row created.
+
+SQL> INSERT INTO Student VALUES(4,'Venna',24,'maths ','venna66@gmail.com');
+
+1 row created.
+
+SQL> INSERT INTO Student VALUES(5,'arya',25,'physics ','arya44@gmail.com');
+
+1 row created.
+
+SQL> SELECT*FROM Student;
+
+ STUDENTID STUDENTNAME                                               AGE
+---------- -------------------------------------------------- ----------
+DEPARTMENT           EMAIL
+-------------------- --------------------------------------------------
+         1 Mariyam                                                    22
+computer science     mariyam@gmail.com
+
+         2 Naveen                                                     21
+humanities           naveen33@gmail.com
+
+         3 Midhun                                                     22
+computer science     midhun78@gmail.com
+
+
+ STUDENTID STUDENTNAME                                               AGE
+---------- -------------------------------------------------- ----------
+DEPARTMENT           EMAIL
+-------------------- --------------------------------------------------
+         4 Venna                                                      24
+maths                venna66@gmail.com
+
+         5 arya                                                       25
+physics              arya44@gmail.com
+
+
+SQL> UPDATE Student SET Age=24 WHERE StudentID=5;
+
+1 row updated.
+
+SQL> SELECT*FROM Student;
+
+ STUDENTID STUDENTNAME                                               AGE
+---------- -------------------------------------------------- ----------
+DEPARTMENT           EMAIL
+-------------------- --------------------------------------------------
+         1 Mariyam                                                    22
+computer science     mariyam@gmail.com
+
+         2 Naveen                                                     21
+humanities           naveen33@gmail.com
+
+         3 Midhun                                                     22
+computer science     midhun78@gmail.com
+
+
+ STUDENTID STUDENTNAME                                               AGE
+---------- -------------------------------------------------- ----------
+DEPARTMENT           EMAIL
+-------------------- --------------------------------------------------
+         4 Venna                                                      24
+maths                venna66@gmail.com
+
+         5 arya                                                       24
+physics              arya44@gmail.com
+
+
+SQL> DELETE FROM Student WHERE Studentid=4;
+
+1 row deleted.
+
+SQL> SELECT*FROM Student;
+
+ STUDENTID STUDENTNAME                                               AGE
+---------- -------------------------------------------------- ----------
+DEPARTMENT           EMAIL
+-------------------- --------------------------------------------------
+         1 Mariyam                                                    22
+computer science     mariyam@gmail.com
+
+         2 Naveen                                                     21
+humanities           naveen33@gmail.com
+
+         3 Midhun                                                     22
+computer science     midhun78@gmail.com
+
+
+ STUDENTID STUDENTNAME                                               AGE
+---------- -------------------------------------------------- ----------
+DEPARTMENT           EMAIL
+-------------------- --------------------------------------------------
+         5 arya                                                       24
+physics              arya44@gmail.com
+
+
+SQL>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
