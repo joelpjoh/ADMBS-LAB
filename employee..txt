@@ -1,0 +1,176 @@
+SQL> CREATE TABLE Product (
+  2      ProductID INT PRIMARY KEY,
+  3      ProductName VARCHAR(50),
+  4      Price DECIMAL(10,2),
+  5      CustomerID INT,
+  6      FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+  7  );
+
+Table created.
+
+SQL> DESC Product
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PRODUCTID                                 NOT NULL NUMBER(38)
+ PRODUCTNAME                                        VARCHAR2(50)
+ PRICE                                              NUMBER(10,2)
+ CUSTOMERID                                         NUMBER(38)
+
+SQL> INSERT INTO Customer VALUES(1,'Alice','Kochi');
+
+1 row created.
+
+SQL> INSERT INTO Customer VALUES(2,'Babu','Trivandrum');
+
+1 row created.
+
+SQL> INSERT INTO Customer VALUES(3,'Chitra','kollam');
+
+1 row created.
+
+SQL> INSERT INTO Customer VALUES(4,'siva',Kottayam');
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> INSERT INTO Customer VALUES(4,'siva','Kottayam');
+
+1 row created.
+
+SQL> INSERT INTO Customer VALUES(5,'sandhya','trivandrum');
+
+1 row created.
+
+SQL> SELECT*FROM TableName
+  2  SELECT*FROM Product
+  3  INSERT INTO Product VALUES(101,'laptop',5500,1);
+SELECT*FROM Product
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL>  INSERT INTO Product VALUES(101,'laptop',5500,1);
+
+1 row created.
+
+SQL>  INSERT INTO Product VALUES(102,'mobile',15000,2);
+
+1 row created.
+
+SQL>  INSERT INTO Product VALUES(103,'TABLET',20000,3);
+
+1 row created.
+
+SQL>  INSERT INTO Product VALUES(104,'PRINTER',10000,4);
+
+1 row created.
+
+SQL>  INSERT INTO Product VALUES(105,'monitor',12000,5);
+
+1 row created.
+
+SQL> select * from product;
+
+ PRODUCTID PRODUCTNAME                                             PRICE
+---------- -------------------------------------------------- ----------
+CUSTOMERID
+----------
+       101 laptop                                                   5500
+         1
+
+       102 mobile                                                  15000
+         2
+
+       103 TABLET                                                  20000
+         3
+
+
+ PRODUCTID PRODUCTNAME                                             PRICE
+---------- -------------------------------------------------- ----------
+CUSTOMERID
+----------
+       104 PRINTER                                                 10000
+         4
+
+       105 monitor                                                 12000
+         5
+
+
+SQL> SELECT Name,City FROM Customer
+  2   SELECT Name,City FROM Customer;
+ SELECT Name,City FROM Customer
+ *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL>  SELECT Name,City FROM Customer;
+
+NAME
+--------------------------------------------------
+CITY
+------------------------------
+Alice
+Kochi
+
+Babu
+Trivandrum
+
+Chitra
+kollam
+
+
+NAME
+--------------------------------------------------
+CITY
+------------------------------
+siva
+Kottayam
+
+sandhya
+trivandrum
+
+
+SQL> SELECT * FROM Customer WHERE City='Kochi';
+
+CUSTOMERID NAME
+---------- --------------------------------------------------
+CITY
+------------------------------
+         1 Alice
+Kochi
+
+
+SQL> SELECT * FROM Product WHERE Price > 15000;
+
+ PRODUCTID PRODUCTNAME                                             PRICE
+---------- -------------------------------------------------- ----------
+CUSTOMERID
+----------
+       103 TABLET                                                  20000
+         3
+
+
+SQL> SELECT CustomerID,COUNT(*)AS TotalProducts FROM Product GROUP BY CustomerID;
+
+CUSTOMERID TOTALPRODUCTS
+---------- -------------
+         1             1
+         2             1
+         4             1
+         5             1
+         3             1
+
+SQL> SELECT CustomerID,AVG(Price)AS AvgPrice FROM Product GROUP BY CustomerID;
+
+CUSTOMERID   AVGPRICE
+---------- ----------
+         1       5500
+         2      15000
+         4      10000
+         5      12000
+         3      20000
+
+SQL>
+
